@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "cities",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "nom": "Charleville-Mézières" }, "geometry": { "type": "Point", "coordinates": [ 522931.349732699047308, 6403876.138739258050919 ] } },
+{ "type": "Feature", "properties": { "fid": 2, "nom": "Saint-Nazaire" }, "geometry": { "type": "Point", "coordinates": [ -247705.648752871144097, 5995256.432487493380904 ] } },
+{ "type": "Feature", "properties": { "fid": 3, "nom": "Rouen" }, "geometry": { "type": "Point", "coordinates": [ 126061.123726743986481, 6343867.140781509689987 ] } },
+{ "type": "Feature", "properties": { "fid": 4, "nom": "Aix-en-Provence" }, "geometry": { "type": "Point", "coordinates": [ 599372.805640020524152, 5387559.49645053781569 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "nom": "Barcelone" }, "geometry": { "type": "Point", "coordinates": [ 238545.079259324498707, 5069027.55539458245039 ] } },
+{ "type": "Feature", "properties": { "fid": 6, "nom": "Toulouse" }, "geometry": { "type": "Point", "coordinates": [ 162398.165781125921058, 5403884.655402712523937 ] } }
+]
+}
