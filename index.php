@@ -265,7 +265,7 @@ const cities_prop = {
     6:{align:'right', offsetX:-10, offsetY:-10}
 };
 
-const cityMarkerStyle = new ol.style.Style({
+const __cityMarkerStyle = new ol.style.Style({
     image: new ol.style.Icon({
     opacity: 1,
     src: 'img/pin_position.svg',
@@ -274,15 +274,8 @@ const cityMarkerStyle = new ol.style.Style({
   }),
 });
 
-function cityMarkerStyleFunction(feature, resolution){
-    return new ol.style.Style({
-        image: new ol.style.Icon({
-            opacity: 1,
-            src: 'img/pin_position.svg',
-            scale: 0.1,
-            anchor: [0.5, 0.9],
-        }),
-        text : new ol.style.Text({
+function cityText(feature, resolution) {
+    return new ol.style.Text({
             //scale:1,
             textAlign: cities_prop[feature.get('fid')]['align'],
             baseline: 'Middle',
@@ -292,7 +285,32 @@ function cityMarkerStyleFunction(feature, resolution){
             stroke: new ol.style.Stroke({color: '#ffffff', width: 2}),
             offsetX: cities_prop[feature.get('fid')]['offsetX'],
             offsetY: cities_prop[feature.get('fid')]['offsetY'],
-        })
+        });
+}
+
+function selectedcityMarkerStyleFunction(feature, resolution){
+    return new ol.style.Style({
+        image: new ol.style.Icon({
+            opacity: 1,
+            src: 'img/pin_position.svg',
+            color: '#ff0000',
+            scale: 0.15,
+            anchor: [0.5, 0.9]
+        }),
+        text : cityText(feature, resolution)
+    });
+}
+
+function cityMarkerStyleFunction(feature, resolution){
+    return new ol.style.Style({
+        image: new ol.style.Icon({
+            opacity: 1,
+            src: 'img/pin_position.svg',
+            color: '#b835ff',
+            scale: 0.1,
+            anchor: [0.5, 0.9]
+        }),
+        text : cityText(feature, resolution)
     });
 }
 
@@ -343,8 +361,12 @@ const map = new ol.Map({
 });
 
 map.on('singleclick', function (e) {
+    villes.getSource().forEachFeature(function(feature) {
+        feature.setStyle(cityMarkerStyleFunction);
+    });
     var feature = map.forEachFeatureAtPixel(e.pixel, function(feature, layer) {
         if (layer === villes) {
+            feature.setStyle(selectedcityMarkerStyleFunction);
             setChart(feature.getProperties().nom);
         }
     });
