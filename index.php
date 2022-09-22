@@ -23,7 +23,6 @@
         
         <div id="competences" style="width:600px; height:600px"></div>
     </div>
-    <div onclick="showAllChart();">Venga</div>
     <script>
     
 const colors = {
