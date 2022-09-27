@@ -16,6 +16,7 @@
         </style>
     </head>
     <body>
+    <h1>Test</h1>
     <div class="row">
         <div id="cont_map">
             <div id="map" style="width:600px; height:600px"></div>
